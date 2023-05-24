@@ -3,10 +3,11 @@ import React from 'react'
 const PeticionApi = () => {
 
     const [personajes, setPersonajes] = React.useState([])
-    const [paginacion, setPaginacion] = React.useState(1)
+    const [paginacion, setPaginacion] = React.useState(0)
 
-    const traerPersonajes = async () => {
-        const res = await fetch(`https://api.spacexdata.com/v4/ships`)
+    const traerPersonajes = async (paginacion) => {
+        console.log(paginacion);
+        const res = await fetch(`https://api.spacexdata.com/v3/ships?limit=4&offset=${paginacion}`)
         const result = await res.json()
 
         setPersonajes(result)
@@ -15,30 +16,37 @@ const PeticionApi = () => {
     }
 
     const siguiente = () =>{
-        setPaginacion(paginacion+1)
-        traerPersonajes()
+        setPaginacion(paginacion+4)
+        traerPersonajes(paginacion+4)
     }
 
     const atras = () =>{
-        setPaginacion(paginacion-1)
-        traerPersonajes()
+        setPaginacion(paginacion-4)
+        traerPersonajes(paginacion<=0?0: paginacion-4)
     }
   return (
-    <div>
-        <h1>PETICIÓN AL API DE BARCOS</h1>
-        <button onClick={traerPersonajes}>Traer Personajes</button>
-        <button onClick={atras}>Atrás</button>
-        <button onClick={siguiente}>Siguiente</button>
+    <div className='container-fluid'>
         
+        <h1 className='title'>PETICIÓN AL API DE BARCOS</h1>
+        <hr />
+        <div className="botones">
+        <button className='btn btn-success btn-lg ' onClick={traerPersonajes}>Traer Personajes</button>
+        </div>
+        <br />
+            <div className="botones">
+                <button className='btn btn-danger btn-lg' onClick={atras}>Atrás</button>
+                <button className='btn btn-primary btn-lg' onClick={siguiente}>Siguiente</button>
+            </div>
+        <div className="row">
         {
-            personajes.map(({id, name, image}) => (
-                <div key= {id}>
+            personajes.map(({ship_id: id, ship_name: name, image}) => (
+                <div key= {id} className='col-xs-12 col-lg-3'>
                     <h4>{id} - {name}</h4>
-                    <img src={image} alt={name} />
+                    <img className="img-thumbnail img" src={image} alt={name} />
                 </div>
             ))
         }
-        
+        </div>
     </div>
   )
 }
