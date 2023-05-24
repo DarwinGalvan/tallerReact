@@ -30,18 +30,18 @@ const PeticionApi = () => {
         <h1 className='title'>PETICIÓN AL API DE BARCOS</h1>
         <hr />
         <div className="botones">
-        <button className='btn btn-success btn-lg ' onClick={traerPersonajes}>Traer Personajes</button>
+        <button className='btn btn-primary btn-lg ' onClick={traerPersonajes}>Traer Barcos </button>
         </div>
         <br />
             <div className="botones">
-                <button className='btn btn-danger btn-lg' onClick={atras}>Atrás</button>
-                <button className='btn btn-primary btn-lg' onClick={siguiente}>Siguiente</button>
+                <button className='btn btn-danger btn-lg' onClick={atras}>   Atrás   </button>
+                <button className='btn btn-success btn-lg' onClick={siguiente}>Siguiente</button>
             </div>
-        <div className="row">
+        <div className="row space">
         {
             personajes.map(({ship_id: id, ship_name: name, image}) => (
                 <div key= {id} className='col-xs-12 col-lg-3'>
-                    <h4>{id} - {name}</h4>
+                    <h6>id: {id} </h6> <h4>Name: {name}</h4>
                     <img className="img-thumbnail img" src={image} alt={name} />
                 </div>
             ))

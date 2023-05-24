@@ -1,16 +1,4 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 .space{
   margin-top: 60px;
@@ -24,10 +12,10 @@ code {
 .botones{  
   text-align: center;
   justify-content: center;
-  gap: 15px;
 }
 
 .title{
   text-align: center;
   justify-content: center;
+  color: #1566FF;
 }
