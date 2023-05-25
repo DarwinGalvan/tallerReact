@@ -21,8 +21,8 @@ const PeticionApi = () => {
     }
 
     const atras = () =>{
-        setPaginacion(paginacion-4)
-        traerPersonajes(paginacion<=0?0: paginacion-4)
+        setPaginacion(paginacion<=0? 0: paginacion-4)
+        traerPersonajes(paginacion<=0? 0: paginacion-4)
     }
   return (
     <div className='container-fluid'>
@@ -35,7 +35,7 @@ const PeticionApi = () => {
         <br />
             <div className="botones">
                 <button className='btn btn-danger btn-lg' onClick={atras}>   Atrás   </button>
-                <button className='btn btn-success btn-lg' onClick={siguiente}>Siguiente</button>
+                <button className='btn btn-success btn-lg' onClick={siguiente}>Siguiente </button>
             </div>
         <div className="row space">
         {
